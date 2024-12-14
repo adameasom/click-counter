@@ -21,13 +21,3 @@ body {
   justify-content: flex-start;
   align-items: center;
 }
-
-/* Links (not used yet but good for consistency) */
-a {
-  color: rgb(0, 123, 255);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
