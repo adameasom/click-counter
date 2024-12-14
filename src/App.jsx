@@ -65,20 +65,18 @@ function ClickCounter() {
       <h3>{timeLeft}s</h3>
       <h2>Clicks</h2>
       <h3>{clicks}</h3>
-      <div className="button-container">
-        <button
-          onClick={handleStartOrClick}
-          className="circle-button"
-          disabled={timeLeft === 0}
-        >
-          {isActive ? "Click Me!" : "Start"}
+      <button
+        onClick={handleStartOrClick}
+        className="circle-button"
+        disabled={timeLeft === 0}
+      >
+        {isActive ? "Click Me!" : "Start"}
+      </button>
+      {timeLeft === 0 && (
+        <button onClick={handleTryAgain} className="try-again-button">
+          One More Time!
         </button>
-        {timeLeft === 0 && (
-          <button onClick={handleTryAgain} className="try-again-button">
-            Try Again
-          </button>
-        )}
-      </div>
+      )}
       <h2>High Score</h2>
       <h3>{highScore}</h3>
       <button
@@ -86,7 +84,7 @@ function ClickCounter() {
         className="reset-button"
         disabled={isActive || timeLeft < 10}
       >
-        Reset High Score
+        Reset
       </button>
     </div>
   );
