@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Confetti from "react-confetti";
 import "./App.css";
 
 function ClickCounter() {
@@ -10,6 +11,8 @@ function ClickCounter() {
   });
 
   const [isNewHighScore, setIsNewHighScore] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+
   const timerRef = useRef(null);
 
   const handleStartOrClick = () => {
@@ -37,13 +40,16 @@ function ClickCounter() {
   };
 
   useEffect(() => {
-    // Update high score if clicks are higher
-    if (clicks > highScore) {
-      setHighScore(clicks);
-      setIsNewHighScore(true); // Mark this as a new high score
-      localStorage.setItem("highScore", clicks);
+    if (timeLeft === 0) {
+      // Update high score if clicks are higher
+      if (clicks > highScore) {
+        setHighScore(clicks);
+        setIsNewHighScore(true); // Mark this as a new high score
+        setShowConfetti(true); // Trigger fireworks
+        localStorage.setItem("highScore", clicks);
+      }
     }
-  }, [clicks, highScore]);
+  }, [timeLeft, clicks, highScore]);
 
   const handleResetHighScore = () => {
     setHighScore(0);
@@ -56,6 +62,7 @@ function ClickCounter() {
     setIsActive(false);
     clearInterval(timerRef.current);
     setIsNewHighScore(false); // Reset new high score indicator when trying again
+    setShowConfetti(false); // Ensure no fireworks on reset
   };
 
   useEffect(() => {
@@ -64,6 +71,11 @@ function ClickCounter() {
 
   return (
     <div className="container">
+      {showConfetti && (
+        <div className={`confetti-wrapper ${!showConfetti ? "fade-out" : ""}`}>
+          <Confetti numberOfPieces={1000} />
+        </div>
+      )}
       <h1>Click Counter Game</h1>
       <h2>Time Left</h2>
       <h3>{timeLeft}s</h3>
