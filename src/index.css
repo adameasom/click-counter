@@ -15,7 +15,7 @@ body {
   color: rgb(51, 51, 51); /* Darker text color for readability */
   text-align: center;
   width: 100vw;
-  min-height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
