@@ -1,25 +1,29 @@
+@keyframes pulse {
+  0% {
+    border: 2px solid rgba(0, 0, 0);
+  }
+  50% {
+    border: 2px solid rgba(60, 60, 60, 0.5);
+  }
+  100% {
+    border: 2px solid rgba(0, 0, 0);
+  }
+}
+
 .container {
+  margin: 20px;
   text-align: center;
   font-family: Arial, sans-serif;
 }
 
-h1,
 h2 {
   margin-top: 0.8rem;
-}
-
-.button-container {
-  height: 325px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 10px;
 }
 
 .circle-button {
   width: 250px;
   height: 250px;
+  margin: 20px;
   border-radius: 50%;
   background-color: #4caf4f59;
   font-size: 18px;
@@ -40,26 +44,28 @@ h2 {
 }
 
 .try-again-button {
-  background-color: #4caf50;
-  color: white;
-  margin-top: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translate(10%, 10%) rotate(-10deg);
+  width: max-content;
+  background-color: white;
   padding: 10px 20px;
-  font-size: 16px;
-  border: 1px solid transparent;
+  font-size: 0.8rem;
+  border: 2px solid black;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   transition: background-color 0.2s ease-in-out;
+  animation: pulse 1.5s infinite;
 }
 
 .try-again-button:hover {
-  background-color: #3b893d;
+  animation: unset;
 }
 
 .reset-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 5px 10px;
+  font-size: 0.6rem;
   background-color: #f44336;
   color: white;
   border: none;
