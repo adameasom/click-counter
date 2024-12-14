@@ -1,35 +1,95 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect, useRef } from "react";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
+function ClickCounter() {
+  const [clicks, setClicks] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(10);
+  const [isActive, setIsActive] = useState(false);
+  const [highScore, setHighScore] = useState(() => {
+    return localStorage.getItem("highScore") || 0;
+  });
+
+  const timerRef = useRef(null);
+
+  const handleStartOrClick = () => {
+    if (!isActive) {
+      // Start the game
+      setIsActive(true);
+      setClicks(1); // First click counts
+      setTimeLeft(10);
+
+      timerRef.current = setInterval(() => {
+        setTimeLeft((prev) => {
+          if (prev <= 1) {
+            clearInterval(timerRef.current);
+            setIsActive(false);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } else {
+      // Increment clicks during the game
+      setClicks((prev) => prev + 1);
+    }
+  };
+
+  useEffect(() => {
+    // Update high score if clicks are higher
+    if (clicks > highScore) {
+      setHighScore(clicks);
+      localStorage.setItem("highScore", clicks);
+    }
+  }, [clicks, highScore]);
+
+  const handleResetHighScore = () => {
+    setHighScore(0);
+    localStorage.setItem("highScore", 0);
+  };
+
+  const handleTryAgain = () => {
+    setClicks(0);
+    setTimeLeft(10);
+    setIsActive(false);
+    clearInterval(timerRef.current);
+  };
+
+  useEffect(() => {
+    return () => clearInterval(timerRef.current); // Cleanup timer on unmount
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="container">
+      <h1>Click Counter Game</h1>
+      <h2>Time Left</h2>
+      <h3>{timeLeft}s</h3>
+      <h2>Clicks</h2>
+      <h3>{clicks}</h3>
+      <div className="button-container">
+        <button
+          onClick={handleStartOrClick}
+          className="circle-button"
+          disabled={timeLeft === 0}
+        >
+          {isActive ? "Click Me!" : "Start"}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        {timeLeft === 0 && (
+          <button onClick={handleTryAgain} className="try-again-button">
+            Try Again
+          </button>
+        )}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <h2>High Score</h2>
+      <h3>{highScore}</h3>
+      <button
+        onClick={handleResetHighScore}
+        className="reset-button"
+        disabled={isActive || timeLeft < 10}
+      >
+        Reset High Score
+      </button>
+    </div>
+  );
 }
 
-export default App
+export default ClickCounter;
