@@ -73,10 +73,10 @@ function ClickCounter() {
     <div className="container">
       {showConfetti && (
         <div className={`confetti-wrapper ${!showConfetti ? "fade-out" : ""}`}>
-          <Confetti numberOfPieces={1000} />
+          <Confetti numberOfPieces={750} />
         </div>
       )}
-      <h1>Click Counter Game</h1>
+      <h1>Cwick Click</h1>
       <h2>Time Left</h2>
       <h3>{timeLeft}s</h3>
       <h2>Clicks</h2>
@@ -90,7 +90,7 @@ function ClickCounter() {
       </button>
       {timeLeft === 0 && (
         <button onClick={handleTryAgain} className="try-again-button">
-          {isNewHighScore ? "New High Score!" : "One More Time!"}
+          {isNewHighScore ? "New High Score! Go Again?" : "One More Time?"}
         </button>
       )}
       <h2>High Score</h2>
