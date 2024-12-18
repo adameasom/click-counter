@@ -98,7 +98,7 @@ function ClickCounter() {
       <button
         onClick={handleResetHighScore}
         className="reset-button"
-        disabled={isActive || timeLeft < 10}
+        disabled={isActive}
       >
         Reset
       </button>
