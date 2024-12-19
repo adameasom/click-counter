@@ -63,6 +63,7 @@ button {
   border: 3px solid #4caf50;
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  touch-action: none;
 }
 
 .circle-button:disabled {

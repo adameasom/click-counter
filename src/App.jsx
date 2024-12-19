@@ -15,7 +15,7 @@ function ClickCounter() {
 
   const timerRef = useRef(null);
 
-  const handleStartOrClick = () => {
+  const handlePointerDown = () => {
     if (!isActive) {
       // Start the game
       setIsActive(true);
@@ -82,7 +82,7 @@ function ClickCounter() {
       <h2>Clicks</h2>
       <h3>{clicks}</h3>
       <button
-        onClick={handleStartOrClick}
+        onPointerDown={handlePointerDown}
         className="circle-button"
         disabled={timeLeft === 0}
       >
