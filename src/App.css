@@ -53,10 +53,10 @@ button {
 }
 
 .circle-button {
-  width: 260px;
+  width: 200px;
   height: 200px;
   margin: 10px;
-  border-radius: 8px;
+  border-radius: 50%;
   background-color: #4caf4f2f;
   font-size: 2.3rem;
   font-weight: bold;
@@ -64,6 +64,10 @@ button {
   cursor: pointer;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
   touch-action: none;
+}
+
+.circle-button:active {
+  transform: scale(1.05);
 }
 
 .circle-button:disabled {
