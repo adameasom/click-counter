@@ -53,8 +53,8 @@ button {
 }
 
 .circle-button {
-  width: 200px;
-  height: 200px;
+  width: 45vh;
+  height: 45vh;
   margin: 10px;
   border-radius: 50%;
   background-color: #4caf4f2f;
