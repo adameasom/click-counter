@@ -17,10 +17,3 @@ html, body {
   background-color: rgb(240, 248, 255); /* Light blue background */
   color: rgb(51, 51, 51); /* Darker text color for readability */
 }
-
-#root {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
