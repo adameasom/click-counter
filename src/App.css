@@ -58,9 +58,9 @@ button {
 }
 
 .circle-button {
-  width: 40dvh;
-  height: 40dvh;
-  border-radius: 25%;
+  width: 35dvh;
+  height: 50dvh;
+  border-radius: 24px;
   background-color: #4caf4f2f;
   font-size: 2.3rem;
   font-weight: bold;
@@ -88,7 +88,7 @@ button {
   border: 2px solid black;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  transform: translate(-110px, 230px) rotate(-10deg);
+  transform: translate(75px, 8px) rotate(10deg);
   transition: background-color 0.2s ease-in-out;
   cursor: pointer;
   animation: pulse 1.5s infinite;

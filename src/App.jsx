@@ -76,8 +76,8 @@ function ClickCounter() {
           <Confetti numberOfPieces={750} />
         </div>
       )}
-      <h1>Cwick Click</h1>
       <div>
+        <h1>Cwick Click</h1>
         <h2>Time Left</h2>
         <h3>{timeLeft}s</h3>
         <h2>Clicks</h2>
@@ -91,12 +91,12 @@ function ClickCounter() {
         >
           {isActive ? "Click Me!" : "Start"}
         </button>
-        {timeLeft === 0 && (
-          <button onClick={handleTryAgain} className="try-again-button">
-            {isNewHighScore ? "New High Score! Go Again?" : "One More Time?"}
-          </button>
-        )}
       </div>
+      {timeLeft === 0 && (
+        <button onClick={handleTryAgain} className="try-again-button">
+          {isNewHighScore ? "New High Score! Go Again?" : "One More Time?"}
+        </button>
+      )}
       <div>
         <h2>High Score</h2>
         <h3>{highScore}</h3>
