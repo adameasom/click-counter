@@ -77,31 +77,37 @@ function ClickCounter() {
         </div>
       )}
       <h1>Cwick Click</h1>
-      <h2>Time Left</h2>
-      <h3>{timeLeft}s</h3>
-      <h2>Clicks</h2>
-      <h3>{clicks}</h3>
-      <button
-        onPointerDown={handlePointerDown}
-        className="circle-button"
-        disabled={timeLeft === 0}
-      >
-        {isActive ? "Click Me!" : "Start"}
-      </button>
-      {timeLeft === 0 && (
-        <button onClick={handleTryAgain} className="try-again-button">
-          {isNewHighScore ? "New High Score! Go Again?" : "One More Time?"}
+      <div>
+        <h2>Time Left</h2>
+        <h3>{timeLeft}s</h3>
+        <h2>Clicks</h2>
+        <h3>{clicks}</h3>
+      </div>
+      <div>
+        <button
+          onPointerDown={handlePointerDown}
+          className="circle-button"
+          disabled={timeLeft === 0}
+        >
+          {isActive ? "Click Me!" : "Start"}
         </button>
-      )}
-      <h2>High Score</h2>
-      <h3>{highScore}</h3>
-      <button
-        onClick={handleResetHighScore}
-        className="reset-button"
-        disabled={isActive || timeLeft < 10}
-      >
-        Reset
-      </button>
+        {timeLeft === 0 && (
+          <button onClick={handleTryAgain} className="try-again-button">
+            {isNewHighScore ? "New High Score! Go Again?" : "One More Time?"}
+          </button>
+        )}
+      </div>
+      <div>
+        <h2>High Score</h2>
+        <h3>{highScore}</h3>
+        <button
+          onClick={handleResetHighScore}
+          className="reset-button"
+          disabled={isActive || timeLeft < 10}
+        >
+          Reset
+        </button>
+      </div>
     </div>
   );
 }
