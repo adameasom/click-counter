@@ -72,7 +72,7 @@ Throughout development, I also had the opportunity to strengthen my understandin
 - React component architecture
 - React Hooks (`useState`, `useEffect`, `useRef`)
 - Event handling
-- Multi-touch input support
+- Pointer Events with multi-touch support
 - State management
 - Real-time UI updates
 - Responsive web design
@@ -185,7 +185,7 @@ Throughout development, I strengthened my understanding of:
 
 - Managing React state during rapid user interactions
 - Handling both mouse and touch events across different devices
-- Implementing multi-touch support for touchscreen gameplay
+- Using Pointer Events to support both mouse and touch interactions
 - Creating real-time UI updates without sacrificing responsiveness
 - Designing animations and visual feedback that enhance user interaction
 - Structuring components to keep game logic organised and maintainable
